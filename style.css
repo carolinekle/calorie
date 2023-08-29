@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    justify-content:space-around
+}
+.calculator{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30vw;
+    height:30vh;
+}
+
+.result{
+    width: 30vw;
+    height:30vh;
+    background-color: aquamarine;
+}
