@@ -1,6 +1,12 @@
 .container{
     display: flex;
-    justify-content:space-around
+    justify-content:space-around;
+    background-color:#F6F7F2;
+    color:#061735;
+    /* take out later */
+    max-width: 70vw;
+    margin:auto;
+    padding:3rem;
 }
 .calculator{
     display: flex;
@@ -10,8 +16,28 @@
     height:30vh;
 }
 
+.submit{
+    background-color:#061735;
+    color:#F2F7F2;
+    width:10rem;
+    height: 2.3rem;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    padding:.5rem;
+    border-radius: 3px;
+    border: 1px solid black;
+    font-size:small;
+
+}
+
 .result{
     width: 30vw;
     height:30vh;
-    background-color: aquamarine;
+    background-color: #061735;
+    color:#F2F7F2;
+    display: flex;
+}
+.message{
+    margin: auto;
 }
