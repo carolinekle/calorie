@@ -3,21 +3,82 @@
     justify-content:space-around;
     background-color:#F6F7F2;
     color:#061735;
-    /* take out later */
     max-width: 70vw;
     margin:auto;
-    padding:3rem;
+    padding:2rem;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 10px;
 }
 .calculator{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items: flex-start;
     width: 30vw;
     height:30vh;
 }
 
+.gender{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.gender > p {
+    margin-right: .5rem;
+}
+
+.weight{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.weight > *{
+    margin-right: .5rem;
+}
+
+#weight{
+    width: 3rem;
+    height: 1rem;
+}
+
+#heightFeet, #heightInches{
+    width: 3rem;
+    height: 1rem;
+}
+
+.height{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.height > * {
+    margin-right: .5rem;
+}
+
+.age{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.age > * {
+    margin-right: .5rem;
+}
+
+#age{
+    width: 3rem;
+    height: 1rem;
+}
+
+#pa{
+    width: 70%;
+}
+
 .submit{
-    background-color:#061735;
+    background-color:#AF0000;
     color:#F2F7F2;
     width:10rem;
     height: 2.3rem;
