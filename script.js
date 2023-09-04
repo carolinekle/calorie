@@ -15,13 +15,17 @@ const calcControls = (()=> {
         const heightFeet = parseFloat(document.getElementById('heightFeet').value);
         const heightInches = parseFloat(document.getElementById('heightInches').value);
         const age = parseFloat(document.getElementById('age').value);
-        const activity = document.getElementById('pa').value;
+        const activity = parseFloat(document.getElementById('pa').value);
+
+
         return { gender, weight, heightFeet, heightInches, age, activity };
     }
 
+
     const checkGender = (values) => {
         if (values.gender == "Female"){
-            const calorieCountF = calcCalories.calcFemale(values);  
+            calcCalories.changeActivityF(values)
+            const calorieCountF = calcCalories.calcFemale(values);
             results.pushResult(calorieCountF);
         }
         else if (values.gender == "Male"){
@@ -29,31 +33,58 @@ const calcControls = (()=> {
             results.pushResult(calorieCountM);
         }
     }
+
+
+
     return { getValues, checkGender }
 })();
 
 const calcCalories = (()=> {
 
+    const changeActivityF = (values) => {
+        const activitySelect = document.getElementById('pa');
+        const selectedIndex = activitySelect.selectedIndex;
+        
+        switch (selectedIndex) {
+            case 0:
+                values.activity = 1;
+                break;
+            case 1:
+                values.activity = 1.14;
+                break;
+            case 2:
+                values.activity = 1.27;
+                break;
+            case 3:
+                values.activity = 1.45;
+                break;
+        }
+
+        return values; 
+    }
+
     const calcFemale = (values) => {
         let calorieCountF;
+        console.log("this is my female pa before calc" + values.activity)
         const totalHeight = ((values.heightFeet * 12) + values.heightInches)
         const metricHeight = totalHeight / 39.37; 
         const metricWeight = values.weight / 2.205;
-        calorieCountF = 387 - 7.31 * values.age + values.activity * (10.9 * metricWeight + 660.7 * metricHeight)
-         console.log(calorieCountF)
-         return calorieCountF; 
+        calorieCountF = 387 - (7.31 * values.age) + (values.activity * ((10.9 * metricWeight) + (660.7 * metricHeight)))
+        
+        return Math.round(calorieCountF); 
     }
 
     const calcMale = (values) => {
         let calorieCountM;
+        console.log("this is my female pa before calc" + values.activity)
         const totalHeight = ((values.heightFeet * 12) + values.heightInches)
         const metricHeight = totalHeight / 39.37; 
         const metricWeight = values.weight / 2.205;
         calorieCountM = 864 - 9.72 * values.age + values.activity * (14.2 * metricWeight + 503 * metricHeight)
-        console.log(calorieCountM)
-        return calorieCountM;
+        
+        return Math.round(calorieCountM);
     }
-    return { calcFemale, calcMale };
+    return { calcFemale, calcMale, changeActivityF };
 })();
 
 const results = (() => {
