@@ -26,10 +26,12 @@ const calcControls = (()=> {
         if (values.gender == "Female"){
             calcCalories.changeActivityF(values)
             const calorieCountF = calcCalories.calcFemale(values);
+
             results.pushResult(calorieCountF);
         }
         else if (values.gender == "Male"){
             const calorieCountM = calcCalories.calcMale(values);
+
             results.pushResult(calorieCountM);
         }
     }
@@ -89,6 +91,18 @@ const calcCalories = (()=> {
 
 const results = (() => {
 
+    const formatNumber = (number) =>{
+        const parts = number.toString().split('.');
+
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    
+        if (parts.length === 2) {
+            return parts.join('.');
+        } else {
+            return parts[0];
+        }
+    }
+
     const pushResult = (final) => {
         const result = document.querySelector(".result");
 
@@ -96,13 +110,13 @@ const results = (() => {
         if (existingResultMessage) {
             result.removeChild(existingResultMessage);
         }
-
+        final = formatNumber(final)
         const resultMessage = document.createElement("h2");
         resultMessage.classList.add("message");
         resultMessage.textContent = final;
         result.appendChild(resultMessage);
     }
 
-    return { pushResult };
+    return { pushResult, formatNumber};
 })();
 
